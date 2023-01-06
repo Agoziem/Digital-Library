@@ -1,0 +1,103 @@
+
+
+.sidebar-divider{
+    background-color: #fff;
+}
+
+.dept img{
+    height: 200px;
+    object-fit: cover;
+}
+.dept .mech{
+    background-color: #010B63;
+    padding-top: 0 !important;
+}
+
+.dept .Chem{
+    background-color: #CC8700;
+    padding-top: 0 !important;
+}
+.dept .comp{
+    background-color: #138900;
+    padding-top: 0 !important;
+}
+.dept .civil{
+    background-color: #010B63;
+    padding-top: 0 !important;
+}
+.dept .h5{
+    color: #fff;
+    text-align: center;
+}
+
+.rule{
+    width: 80px;
+    height: 5px;
+    background-color: #010B63;
+    margin-bottom: 10px;
+}
+
+.top-bar{
+    background-color: #f0f0f0;
+    color: #010B63;
+    padding:1rem;
+}
+
+.btn_pdf{
+    background-color: #CC8700;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.7rem 2rem;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.btn_pdf:hover{
+    opacity: 0.8;
+}
+
+.page-info{
+    margin-left: 1rem;
+    font-weight: 600;
+}
+
+.error{
+    background: orangered;
+    color: #fff;
+    padding: 1rem;
+}
+
+.brandlogo{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 2px 4.2963px 4.2963px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-sm{
+    box-shadow: 2px 4.2963px 4.2963px rgba(0, 0, 0, 0.25);
+}
+
+.no_textbook_container{
+    height: 200px; 
+    width: 75%;
+    background-color: #ececec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.errorlist {
+    padding: 20px ;
+    list-style-type: none;
+    border-radius: 10px;
+}
+.errorlist li{
+    color: #fff;
+    padding-left: 20px;
+    font-size: 15px;
+}
