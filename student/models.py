@@ -29,3 +29,11 @@ class Student(models.Model):
     
     def __str__(self):
         return str(self.FirstName)
+
+    @property    
+    def imageURL(self):
+        try:
+            url= self.thumbnail.url
+        except:
+            url=''
+        return url(self)
