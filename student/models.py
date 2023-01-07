@@ -33,7 +33,7 @@ class Student(models.Model):
     @property    
     def imageURL(self):
         try:
-            url= self.thumbnail.url
+            url= self.profileimage.url
         except:
             url=''
-        return url(self)
+        return url
