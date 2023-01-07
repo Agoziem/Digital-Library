@@ -94,7 +94,7 @@ def Profile_update_view(request,id):
        "student":student,
        
     }
-    return render(request,"profile_update.html",context)
+    return render(request,"Profile_update.html",context)
 
 def logoutUser(request):
 	logout(request)
