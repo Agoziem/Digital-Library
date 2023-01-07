@@ -18,6 +18,7 @@ Level = (
             ('500', '500'),
 
 			)
+            
 class Student(models.Model):
     User=models.ForeignKey(User, on_delete= models.SET_NULL,blank=True, null=True,)
     profileimage = models.ImageField(upload_to='assets', blank=True)
