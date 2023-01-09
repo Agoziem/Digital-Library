@@ -5,4 +5,5 @@ admin.site.register(department)
 admin.site.register(Textbook)
 admin.site.register(PastQuestion)
 admin.site.register(Material)
+admin.site.register(NewsAlert)
 

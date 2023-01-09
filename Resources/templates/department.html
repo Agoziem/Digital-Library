@@ -10,10 +10,22 @@
             <h1 class="h3 mb-2 text-gray-800 text-uppercase">{{ Department.Name }} Engineering</h1>
             <div class="rule"></div>
             <div class="h6"> {{level}} level Resources</div>
+            <div class="btn-group mb-2">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Switch Level
+                </button>
+                <ul class="dropdown-menu">              
+                    <li> <a class="dropdown-item" href="{% url 'Resources:department'  Department.id 100 %}">100</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Resources:department'  Department.id 200 %}">200</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Resources:department'  Department.id 300 %}">300</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Resources:department'  Department.id 400 %}">400</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Resources:department'  Department.id 500 %}">500</a></li>
+                </ul>
+            </div>
         </div>
 
     </div>
-
 
     <ul class="buttonContainer nav nav-pills my-3">
         <li class="nav-item">
@@ -27,20 +39,42 @@
         </li>
     </ul>
 
+
+    <!-- Example single danger button -->
+
+
+
+
     <div class="tabPanel E_textbook_Wrapper" style="display: none;">
         {% if not Etextbooks %}
         <div class="no_textbook_container mt-3">
             <h5> Textbooks are not available at the moment, Please check back later</h5>
         </div>
         {% else %}
+        <div class="mb-3">
+            <form class="d-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input id="searchbar2" type="text" class="form-control border-0 small" placeholder="Search for..."
+                        aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button id="search2" class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
         <div class="dept row ">
             <!-- Mechanical Engineering -->
             {% for textbook in Etextbooks %}
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div id="departmentcard1" class="col-xl-3 col-md-6 mb-4">
                 <div class="card  shadow h-100 py-2">
                     <div class="card-body d-flex flex-column align-items-center">
                         <img src="{{ textbook.TextbookimageURL }}" alt="" class="img-fluid mb-3 shadow-sm">
-                        <h4 class="h6 mb-2 text-center">{{ textbook.Title }}</h4>
+                        <h4 id="departmentname1" class="h6 mb-2 text-center">{{ textbook.Title }}</h4>
                         <a href="{{ textbook.File.url }}" class="btn btn-primary" download>download <i
                                 class="fa-solid fa-download"></i></a>
                     </div>
@@ -48,17 +82,31 @@
             </div>
             {% endfor %}
 
+            <div>
+
+            </div>
+
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link">Previous</a>
+                    {% if Etextbooks.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+                    <li class="page-item"><a class="page-link"
+                            href="?page={{ Etextbooks.previous_page_number }}">Previous</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                    {% endif %}
+                    {% for num in nums %}
+                    <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}"
+                            data-counter="{{ forloop.counter }}"> {{ forloop.counter }}</a></li>
+                    {% endfor %}
+                    {% if Etextbooks.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{Etextbooks.next_page_number}}">next</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
+                    <li class="page-item"><a class="page-link" href="?page={{ Etextbooks.paginator.num_pages }}">Last
+                            &raquo;</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="#">next</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>

@@ -55,76 +55,78 @@
                             </div>
                             {% endfor %}
                             {% endif %}
-                            <form class="user" method="POST" action="" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input name="Firstname" type="text" class="form-control form-control-user"
-                                            id="exampleFirstName" placeholder="First Name" maxlength="150" required>
+                            <div class="d-flex justify-content-center" style="max-width:500px">
+                                <form class="user" method="POST" action="" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <!-- <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input name="Firstname" type="text" class="form-control form-control-user"
+                                                id="exampleFirstName" placeholder="First Name" maxlength="150" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input name="Lastname" type="text" class="form-control form-control-user"
+                                                id="exampleLastName" placeholder="Last Name" maxlength="150" required>
+                                        </div>
+    
                                     </div>
-                                    <div class="col-sm-6">
-                                        <input name="Lastname" type="text" class="form-control form-control-user"
-                                            id="exampleLastName" placeholder="Last Name" maxlength="150" required>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <select class="form-select form-control-user" aria-label="Default select example" required name="dept">
-                                            <option selected value="">Select your department</option>
-                                            {% for Department in Departments %}
-                                            <option value="{{ Department.id }}">{{ Department.Name }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
-                        
-                                        <select class="form-select form-control-user" aria-label="Default select example" required name="Level">
-                                            <option selected value="">Select your Level...</option>
-                                            <option value="100">100</option>
-                                            <option value="200">200</option>
-                                            <option value="300">300</option>
-                                            <option value="400">400</option>
-                                            <option value="500">500</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="Gender" id="flexRadioDefault1" value="Male" checked>
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                              Male
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="Gender" id="flexRadioDefault2" value="Female">
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                             Female
-                                            </label>
-                                          </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p>Upload a good Profile Picture</p>
-                                        <div class="input-group mb-3">
-                                            <input type="file" class="form-control" id="inputGroupFile02" name="file">
+    
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <select class="form-select form-control-user" aria-label="Default select example" required name="dept">
+                                                <option selected value="">Select your department</option>
+                                                {% for Department in Departments %}
+                                                <option value="{{ Department.id }}">{{ Department.Name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                            
+                                            <select class="form-select form-control-user" aria-label="Default select example" required name="Level">
+                                                <option selected value="">Select your Level...</option>
+                                                <option value="100">100</option>
+                                                <option value="200">200</option>
+                                                <option value="300">300</option>
+                                                <option value="400">400</option>
+                                                <option value="500">500</option>
+                                            </select>
                                         </div>
                                     </div>
-                                </div>
-
-
-                                <button class="btn btn-primary btn-user btn-block" type="submit" value="submit">Update
-                                    Profile</button>
-                                <!-- <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a> -->
-                            </form>
+    
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="Gender" id="flexRadioDefault1" value="Male" checked>
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                  Male
+                                                </label>
+                                              </div>
+                                              <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="Gender" id="flexRadioDefault2" value="Female">
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                 Female
+                                                </label>
+                                              </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p>Upload a good Profile Picture</p>
+                                            <div class="input-group mb-3">
+                                                <input type="file" class="form-control" id="inputGroupFile02" name="file">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <button class="btn btn-primary btn-user btn-block" type="submit" value="submit">Update
+                                        Profile</button>
+                                    <!-- <hr>
+                                    <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <i class="fab fa-google fa-fw"></i> Register with Google
+                                    </a>
+                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                    </a> -->
+                                </form>
+                            </div>
+                            
                 
         
                         </div>

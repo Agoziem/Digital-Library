@@ -20,8 +20,8 @@ Level = (
 			)
             
 class Student(models.Model):
-    User=models.ForeignKey(User, on_delete= models.SET_NULL,blank=True, null=True,)
-    profileimage = models.ImageField(upload_to='assets', blank=True)
+    User=models.OneToOneField(User, on_delete= models.SET_NULL,blank=True, null=True,)
+    profileimage = models.ImageField(upload_to='assets', blank=True,null=True) 
     FirstName =models.CharField(max_length=300, blank=True, null=True)
     LastName =models.CharField(max_length=300, blank=True, null=True)
     Gender=models.CharField(max_length=200, null=True, choices=Gender , blank=False)

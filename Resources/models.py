@@ -64,4 +64,12 @@ class Material(models.Model):
         return str(self.Title)
 
 
+class NewsAlert(models.Model):
+    brief_Message= models.CharField(max_length=300, blank = False, null=True)
+    Name =models.CharField(max_length=200, null=True , blank=False)
+    Date_added=models.DateTimeField(auto_now_add=True)
+
+   
+    def __str__(self):
+        return str(self.Name)
 

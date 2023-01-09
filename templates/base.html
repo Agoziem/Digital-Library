@@ -164,7 +164,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeven"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fa-regular fa-building"></i>
                     <span>{{ Structural.Name }} </span>
                 </a>
                 <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -183,7 +183,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseeight"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa-solid fa-flask-vial"></i>
+                    <i class="fa-solid fa-truck-monster"></i>
                     <span>{{ Agricultural.Name }}</span>
                 </a>
                 <div id="collapseeight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -202,7 +202,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsenine"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa-solid fa-bolt"></i>
+                    <i class="fa-solid fa-lightbulb"></i>
                     <span>{{ Mechatronics.Name }}</span>
                 </a>
                 <div id="collapsenine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -240,7 +240,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseeleven"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa-solid fa-computer"></i>
+                    <i class="fa-solid fa-industry"></i>
                     <span>{{ Industrial.Name }}</span>
                 </a>
                 <div id="collapseeleven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -259,7 +259,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsetwelve"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa-solid fa-computer"></i>
+                    <i class="fa-solid fa-gas-pump"></i>
                     <span>{{ Petroluem.Name }}</span>
                 </a>
                 <div id="collapsetwelve" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -278,7 +278,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethirteen"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa-solid fa-computer"></i>
+                    <i class="fa-solid fa-helmet-safety"></i>
                     <span>{{ Production.Name }}</span>
                 </a>
                 <div id="collapsethirteen" class="collapse" aria-labelledby="headingTwo"
@@ -290,6 +290,26 @@
                         <a class="collapse-item" href="{% url 'Resources:department'  Production.id 300 %}">300</a>
                         <a class="collapse-item" href="{% url 'Resources:department'  Production.id 400 %}">400</a>
                         <a class="collapse-item" href="{% url 'Resources:department'  Production.id 500 %}">500</a>
+                    </div>
+                </div>
+            </li>
+
+             <!-- Met Mat  -->
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefoutheen"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa-solid fa-wrench"></i>
+                    <span>{{ Metallurgical.Name }}</span>
+                </a>
+                <div id="collapsefoutheen" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Levels:</h6>
+                        <a class="collapse-item" href="{% url 'Resources:department'  Metallurgical.id 100 %}">100</a>
+                        <a class="collapse-item" href="{% url 'Resources:department'  Metallurgical.id 200 %}">200</a>
+                        <a class="collapse-item" href="{% url 'Resources:department'  Metallurgical.id 300 %}">300</a>
+                        <a class="collapse-item" href="{% url 'Resources:department'  Metallurgical.id 400 %}">400</a>
+                        <a class="collapse-item" href="{% url 'Resources:department'  Metallurgical.id 500 %}">500</a>
                     </div>
                 </div>
             </li>
@@ -314,42 +334,48 @@
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
+                        <i class="fa fa-bars" style="font-size: 20px;"></i>
                     </button>
 
                     <!-- Topbar Search -->
+                    {% if deptpage %}
+                    <h4 class="d-none d-sm-block">
+                        Online Resources
+                    </h4>
+                    {% else %}
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" id="searchbar" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2" required>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button id="search" class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
                         </div>
                     </form>
+                    {% endif %}
+                    
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
+                        {% if deptpage %}
+                        <li class="nav-item dropdown no-arrow d-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
+                                <i class="fas fa-search fa-fw" style="font-size: 20px;"></i>
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input id="searchbar" type="text" class="form-control bg-light border-0 small"
+                                        <input  id="searchbar"  type="text" class="form-control bg-light border-0 small"
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button id="search"  class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -357,55 +383,69 @@
                                 </form>
                             </div>
                         </li>
+                        {% else %}
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw" style="font-size: 20px;"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input id="searchbar1" type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button id="search1" class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        {% endif %}
+
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
+                                <i class="fas fa-bell fa-fw" style="font-size: 20px;"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                                {% if Alertscount != 0 %}
+                                <span class="badge badge-danger badge-counter">{{Alertscount}}</span>
+                                {% endif %}
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Alerts Center
+                                    Notifications 
                                 </h6>
+                                {% if not Alerts %}
+                                <a class="dropdown-item text-center small text-gray-500" href="#">No Information at the Moment </a>
+                                {% else %}
+                                {% for Alert in Alerts %}
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
                                         <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
+                                            <i class="fa-solid fa-circle-info text-white"></i>
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <div class="small text-gray-500">{{ Alert.Date_added }}</div>
+                                        <span class="font-weight-bold">{{ Alert.brief_Message }}</span>
                                     </div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                {% endfor %}
+
+                                {% endif %}
+                                
+                                
                             </div>
                         </li>
 
@@ -413,9 +453,11 @@
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
+                                <i class="fas fa-envelope fa-fw" style="font-size: 20px;"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
+                                <!-- {% if messagescount != 0 %}
+                                <span class="badge badge-danger badge-counter">{{messagescount}}</span>
+                                {% endif %} -->
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -423,6 +465,7 @@
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
+                                {% for Message in messagelist %}
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
                                         <img class="rounded-circle" src="{% static 'img/undraw_profile_1.svg' %}"
@@ -430,48 +473,11 @@
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                        <div >Hi {{ request.user }}, '{{Message}}' have been uploaded </div>
+                                        <div class="small text-gray-500">Admin</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="{% static 'img/undraw_profile_2.svg' %}"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="{% static 'img/undraw_profile_3.svg' %}"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                {% endfor %}
                             </div>
                         </li>
 
@@ -482,27 +488,27 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello , {{ request.user }}</span>
-                                {% if profile.imageURL %}
-                                <img class="img-profile rounded-circle" src="{{ profile.imageURL }}">
-                                {% else %}
+                                {% if profile.imageURL == '' %}
                                 <img class="img-profile rounded-circle" src="{% static 'img/undraw_profile.svg' %}">
+                                {% else %}
+                                <img class="img-profile rounded-circle" src="{{ profile.imageURL }}">
                                 {% endif %}
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{% url 'Accounts:profileupdate' profile.id %}">
+                                <a class="dropdown-item" href="{% url 'Accounts:profile' %}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     update Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
-                                </a>
+                                </a> -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{% url 'Accounts:logout' %}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
