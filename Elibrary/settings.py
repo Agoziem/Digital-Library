@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     "Accounts",
 ]
 
-# DJANGO_ADMIN_LOGS_DELETABLE = True
-# DJANGO_ADMIN_LOGS_ENABLED = False
+DJANGO_ADMIN_LOGS_DELETABLE = True
+DJANGO_ADMIN_LOGS_ENABLED = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,7 +146,7 @@ USE_L10N = True
 USE_TZ = True
 
 # STATIC_URL = '/static/'
-# STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+# STATIC_ROOT=os.path.join(BASE_DIR,'static')
 # STATICFILES_DIRS= [os.path.join(BASE_DIR, "assets"),]
 
 # MEDIA_URL= '/media/'
@@ -160,7 +160,7 @@ AWS_S3_SIGNATURE_NAME = config('AWS_S3_SIGNATURE_NAME', default='')
 AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='')
 AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS={'CacheControl':'max-age=86400'}
-# STATICFILES_STORAGE= 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE= 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE='Elibrary.storages.MediaStore'
 
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
